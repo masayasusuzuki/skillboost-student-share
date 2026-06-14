@@ -1,20 +1,28 @@
 # SKILL BOOST 配布物（生徒向け）
 
-このフォルダには、SKILL BOOST の講座で配布している教材一式（Claude Code スキル2つ + サンプルアプリ3つ）がまとまっています。
+このリポジトリには、SKILL BOOST の講座で使う教材一式（Claude Code スキル2つ + サンプルアプリ3つ）がまとまっています。
 すべて、ダウンロードした人がそのまま始められるように作ってあります（特定の人のパソコンに依存したパスは入っていません）。
 
 ## 中身
 
 ```
-student-share/
+.
 ├── README.md          ← このファイル
 ├── skills/            ← Claude Code に追加するスキル
 │   ├── generate-script/   台本（script.md）を自動生成するスキル
 │   └── generate-slides/   台本からスライド（PPTX/PDF）を自動生成するスキル
-└── apps/              ← 講義で作ったサンプルアプリ
-    ├── scraping-target/   スクレイピング練習用のデモサイト（Phase 2）
-    ├── scraping-app/      スクレイピングWebアプリ（Phase 2）※下記の注意あり
-    └── legal-check-app/   契約書チェック自動化ツール（Phase 2）
+└── apps/              ← 講義で作るサンプルアプリ
+    ├── scraping-target/   スクレイピング練習用のデモサイト
+    ├── scraping-app/      料金スクレイピングWebアプリ
+    └── legal-check-app/   契約書チェック自動化ツール
+```
+
+## 入手方法
+
+このリポジトリをまるごと手元にダウンロードします。
+
+```bash
+git clone https://github.com/masayasusuzuki/skillboost-student-share.git
 ```
 
 ---
@@ -43,14 +51,14 @@ cp -r skills/generate-script skills/generate-slides ~/.claude/skills/
 | アプリ | 内容 | APIキー |
 |---|---|---|
 | `scraping-target` | スクレイピング練習用のデモサイト | 不要 |
-| `scraping-app` | スクレイピングWebアプリ | （現在ソース未収録・下記参照） |
+| `scraping-app` | 料金スクレイピングWebアプリ | 不要 |
 | `legal-check-app` | 契約書チェック自動化ツール | DeepSeek APIキーが必要 |
 
-> ⚠️ **scraping-app について**：配布元リポジトリがまだ空のため、現在は雛形だけが入っています。完成版のソースは別途共有が必要です。
+> `scraping-app` は `scraping-target` とペアで使います。デモサイト（ポート3000）を起動した状態で、スクレイピングアプリ（ポート3100）から取得します。2つ同時に起動できるよう、ポートを分けてあります。
 
 ---
 
 ## 補足
 
-- このフォルダ内のアプリ・ツールはすべて、フォルダの中だけで完結する相対パスで動くようになっています。好きな場所に置いて構いません（スキルだけは `~/.claude/skills/` に置く必要があります）。
+- アプリは各フォルダの中だけで完結する相対パスで動くので、好きな場所に置いて構いません（スキルだけは `~/.claude/skills/` に置く必要があります）。
 - APIキーは絶対に他人に見せたり、GitHub にアップロードしたりしないでください。
